@@ -1,7 +1,7 @@
 name: Deploy
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
     inputs:
       ref:
         description: 'The branch, tag or SHA to checkout'
