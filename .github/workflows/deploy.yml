@@ -18,7 +18,8 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
-        ref: ${{ github.event.inputs.ref }}
+        with:
+          ref: ${{ github.event.inputs.ref }}
  
       - name: GCP Authenticate
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
