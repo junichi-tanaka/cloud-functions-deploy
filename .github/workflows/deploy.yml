@@ -1,6 +1,12 @@
 name: Deploy
 
-on: workflow_dispatch
+on:
+  workflow_dispatch
+    inputs:
+      ref:
+        description: 'The branch, tag or SHA to checkout'
+        default: 'tag1'
+        required: true
 
 env:
   GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
@@ -12,7 +18,7 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
-        # ref: ''
+        ref: ${{ github.event.inputs.ref }}
  
       - name: GCP Authenticate
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
