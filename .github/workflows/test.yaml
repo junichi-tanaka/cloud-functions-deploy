@@ -1,0 +1,29 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'The branch, tag or SHA to checkout'
+        default: 'tag1'
+        required: true
+
+env:
+  GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+  GCP_REGION: ${{ secrets.GCP_REGION }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: print hoge
+      env:
+        AA: aa
+        BB: bb
+        CC: cc
+      run: |
+        jq -n \
+          --arg aa $AA \
+          --arg bb $BB \
+          --arg cc $CC \
+           '{"aa": $AA, "bb": $BB, "cc": $CC}'
